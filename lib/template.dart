@@ -7,7 +7,7 @@ Color primaryColor  = Color(0xff398AB9);
 Color blackColor    = Color (0xff334257);
 Color subtitleColor = Color (0xffB0B0B0);
 Color ellipseColor  = Color (0xffE0E0E0);
-Color backgroundColor = Color (0xffffffff);
+Color backgroundColor1 = Color (0xffffffff);
 
 TextStyle blackTextStyle = GoogleFonts.poppins(
   color: blackColor
@@ -18,7 +18,11 @@ TextStyle subitleTextColor = GoogleFonts.poppins(
 );
 
 TextStyle whiteTextStyle = GoogleFonts.poppins(
-  color: backgroundColor
+  color: backgroundColor1
+);
+
+TextStyle primaryTextStyle = GoogleFonts.poppins(
+  color: primaryColor
 );
 
 FontWeight reguler = FontWeight.w400;

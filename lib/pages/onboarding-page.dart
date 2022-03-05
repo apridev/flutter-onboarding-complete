@@ -33,7 +33,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor1,
       body: SafeArea(
         child: Column(
           children: [
@@ -99,7 +99,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       left: defaulMargin
                     ),
                     child: TextButton(
-                      onPressed: (){}, 
+                      // !Bagian slide terakhir
+                      onPressed: (){
+                        Navigator.pushNamed(context, '/login-page');
+                      }, 
                       style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)
@@ -120,7 +123,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     children: [
                       onBordingNavBtn(
                         name: 'Masuk',
-                        onPressed: (){},
+                        // !Sisi kiri bagian slide
+                        onPressed: (){
+                          Navigator.pushNamed(context, '/login-page');
+                        },
                       ),
                       Row(
                         children: List.generate(onBoardingContext.length, (index) => dotIndicator(index)),
@@ -173,7 +179,7 @@ class onBordingNavBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(12),
-      splashColor: backgroundColor,
+      splashColor: backgroundColor1,
       onTap: onPressed,
       child: Text(
         'Masuk',
