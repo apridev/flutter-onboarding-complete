@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:started_complete/template.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+
+  bool isHiddenPassword = true;
+
   @override
   Widget build(BuildContext context) {
     Widget header() {
@@ -119,16 +127,19 @@ class LoginPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextFormField(
-                      obscureText: true,
+                      obscureText: isHiddenPassword,
                       cursorColor: ellipseColor,
                       decoration: InputDecoration.collapsed(
                           hintText: 'Masukan Password',
                           hintStyle: subitleTextColor),
                     ),
                   ),
-                  Image.asset(
-                    'assets/icon/eye-icon.png', 
-                    width: 24,
+                  InkWell(
+                    onTap: _togglePasswordView,
+                    child: isHiddenPassword == true ? Image.asset(
+                      'assets/icon/eye-icon.png', 
+                      width: 24,
+                    ) : Image.asset('assets/icon/eye-off-icon.png', width: 24,)
                   )
                 ],
               ),
@@ -206,4 +217,16 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+
+  void _togglePasswordView(){
+    if(isHiddenPassword == true){
+      isHiddenPassword = false;
+    } else {
+      isHiddenPassword = true;
+    }
+    setState(() {
+      
+    });
+  }
+
 }

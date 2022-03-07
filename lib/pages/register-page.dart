@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:started_complete/template.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  bool isHiddenPassword = true;
+
   @override
   Widget build(BuildContext context) {
     Widget header() {
@@ -152,12 +159,25 @@ class RegisterPage extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: ellipseColor)),
-              child: TextFormField(
-                cursorColor: ellipseColor,
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Masukan Password',
-                    hintStyle: subitleTextColor),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      obscureText: isHiddenPassword,
+                      cursorColor: ellipseColor,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Masukan Password',
+                          hintStyle: subitleTextColor),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: _togglePasswordView,
+                      child: isHiddenPassword == true ? Image.asset(
+                    'assets/icon/eye-icon.png',
+                    width: 24,
+                  ) : Image.asset('assets/icon/eye-off-icon.png', width: 24,) )
+                ],
               ),
             ),
           ],
@@ -200,13 +220,13 @@ class RegisterPage extends StatelessWidget {
                 width: 4,
               ),
               GestureDetector(
-                onTap: (){
-                  Navigator.pushNamed(context, '/login-page');
-                },
+                  onTap: () {
+                    Navigator.pushNamed(context, '/login-page');
+                  },
                   child: Text(
-                'Masuk',
-                style: primaryTextStyle.copyWith(fontSize: 12),
-              ))
+                    'Masuk',
+                    style: primaryTextStyle.copyWith(fontSize: 12),
+                  ))
             ],
           ),
         ),
@@ -233,4 +253,16 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
+
+  void _togglePasswordView(){
+    if(isHiddenPassword == true){
+      isHiddenPassword = false;
+    } else{
+      isHiddenPassword = true;
+    }
+    setState(() {
+      
+    });
+  }
+
 }
